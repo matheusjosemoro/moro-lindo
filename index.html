@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Técnicas Computacionais: IA na Escola</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --secondary: #06b6d4;
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+            --card-bg: #ffffff;
+            --accent: #f43f5e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: -2rem auto 3rem;
+            padding: 0 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .grid-item {
+            background: #f1f5f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .grid-item h3 {
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .interactive-section {
+            background: #e0f2fe;
+            border: 1px solid #bae6fd;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .interactive-section textarea {
+            width: 100%;
+            height: 100px;
+            padding: 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            margin-top: 1rem;
+            resize: vertical;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        #feedback {
+            margin-top: 1rem;
+            font-weight: bold;
+            color: var(--primary-dark);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #0f172a;
+            color: white;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Técnicas Computacionais</h1>
+        <p>Refletindo sobre o Impacto e o Futuro da Inteligência Artificial no Ambiente Escolar</p>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>O que são Técnicas Computacionais?</h2>
+            <p>As técnicas computacionais englobam algoritmos, processamento de dados, automação e aprendizado de máquina. No contexto escolar, elas deixam de ser apenas ferramentas de laboratório de informática para se tornarem o núcleo de uma nova revolução educacional, moldando a forma como aprendemos e ensinamos.</p>
+        </section>
+
+        <section class="card">
+            <h2>A Inteligência Artificial na Rotina Escolar</h2>
+            <p>A presença da IA nas escolas traz transformações profundas que impactam tanto estudantes quanto educadores:</p>
+            
+            <div class="grid">
+                <div class="grid-item">
+                    <h3>Personalização do Ensino</h3>
+                    <p>Sistemas inteligentes adaptam o ritmo e o conteúdo de acordo com as necessidades específicas de cada aluno.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Apoio ao Professor</h3>
+                    <p>Automação de tarefas repetitivas e burocráticas, liberando tempo para o planejamento pedagógico e mediação humana.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Desafios Éticos</h3>
+                    <p>Questões sobre plágio, dependência tecnológica, privacidade de dados e a perda do pensamento crítico autônomo.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card interactive-section">
+            <h2>Espaço de Reflexão</h2>
+            <p>Na sua opinião, qual é o maior benefício ou o maior perigo da Inteligência Artificial na escola?</p>
+            <textarea id="reflexaoInput" placeholder="Escreva sua reflexão aqui..."></textarea>
+            <br>
+            <button class="btn" onclick="salvarReflexao()">Enviar Reflexão</button>
+            <p id="feedback"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Projeto Acadêmico - Técnicas Computacionais e Educação &copy; 2026</p>
+    </footer>
+
+    <script>
+        function salvarReflexao() {
+            const input = document.getElementById('reflexaoInput').value;
+            const feedback = document.getElementById('feedback');
+            
+            if(input.trim() === "") {
+                feedback.style.color = "var(--accent)";
+                feedback.textContent = "Por favor, escreva algo antes de enviar!";
+                return;
+            }
+
+            feedback.style.color = "var(--primary-dark)";
+            feedback.textContent = "Obrigado por compartilhar sua reflexão! O pensamento crítico é essencial na era da IA.";
+            document.getElementById('reflexaoInput').value = "";
+        }
+    </script>
+
+</body>
+</html>
